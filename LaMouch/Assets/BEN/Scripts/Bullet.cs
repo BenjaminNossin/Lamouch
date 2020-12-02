@@ -2,8 +2,8 @@
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField, Range(0.5f, 5f)] private float speed = 2f;
-    [SerializeField, Range(0.25f, 5f)] private float destroyDelay = 2f;
+    [SerializeField, Range(5f, 15f)] private float speed = 10f;
+    [SerializeField, Range(0.1f, 2f)] private float destroyDelay = 1f;
 
     private void Start()
     {
