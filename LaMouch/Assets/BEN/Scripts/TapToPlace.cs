@@ -44,9 +44,6 @@ public class TapToPlace : MonoBehaviour
         if (Input.GetTouch(0).phase == TouchPhase.Began) // m_aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon) && 
         {
             weaponBehaviour.Attack(); 
-
-            weapon.transform.localScale = new Vector3(2f, 2f, 2f);
-            StartCoroutine(ResetWeaponScale()); 
         }
 #endif
 
