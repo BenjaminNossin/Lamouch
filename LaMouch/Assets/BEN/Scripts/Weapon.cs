@@ -16,7 +16,9 @@ public class Weapon : MonoBehaviour
     private bool obstacleDetected; 
     private readonly int 
         enemyMaskindex = 10,
-        obstacleMaskIndex = 11; 
+        obstacleMaskIndex = 11;
+
+    public Sound shootSound; 
 
     [Header("-- DEBUG --")]
     [SerializeField] private GameObject target;
@@ -33,6 +35,11 @@ public class Weapon : MonoBehaviour
         if (canShoot)
         {
             Instantiate(bullet, firepoint.position, firepoint.rotation);
+
+            shootSound.source.outputAudioMixerGroup = shootSound.group;
+            shootSound.source.PlayOneShot(shootSound.clip);
+
+            StartCoroutine(ModifyWeaponRotation());
             StartCoroutine(Cooldown()); 
         }
     }
@@ -62,6 +69,22 @@ public class Weapon : MonoBehaviour
             nullIndicator.SetActive(false);
         }
 
+    }
+
+    IEnumerator ModifyWeaponRotation()
+    {
+        yield return new WaitForFixedUpdate(); 
+
+        // play animation instead
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,
+                                              transform.rotation.eulerAngles.y,
+                                              transform.rotation.eulerAngles.z + 23f);
+
+        yield return new WaitForSeconds(0.1f);
+        // animation placeholder
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,
+                                      transform.rotation.eulerAngles.y,
+                                      transform.rotation.eulerAngles.z - 23f);
     }
 
     IEnumerator Cooldown()
