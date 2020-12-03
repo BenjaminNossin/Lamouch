@@ -130,9 +130,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06207c0a8a1803740bbf5a309b6d7721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  rotationSpeed: 10
+  attackSpeed: 5
+  chargingStateMaxDelay: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   AIState: 0
-  pillar: {fileID: 0}
 --- !u!1 &5486431467030440923
 GameObject:
   m_ObjectHideFlags: 0
