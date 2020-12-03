@@ -91,16 +91,9 @@ public class EnemyAI : MonoBehaviour
         {
             newRotationIsSet = true;
             transform.LookAt(target.position - transform.position);
-
-            Debug.Log(transform.rotation.eulerAngles); 
-
             transform.rotation = Quaternion.Euler(-transform.rotation.eulerAngles.x,
                                                   transform.rotation.eulerAngles.y - 180f, 
                                                   transform.rotation.eulerAngles.z);
-
-            Debug.Log(transform.rotation.eulerAngles); 
-
-            Debug.Log("new rotation is set"); 
         }
 
         if (rush)
