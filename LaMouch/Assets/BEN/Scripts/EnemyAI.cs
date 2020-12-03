@@ -105,6 +105,7 @@ public class EnemyAI : MonoBehaviour
         if (other.CompareTag("MainCamera"))
         {
             Destroy(gameObject); // placeholder
+            Debug.Log("-- HIT --"); 
             // NEED FEEDBACK PASS
         }
     }

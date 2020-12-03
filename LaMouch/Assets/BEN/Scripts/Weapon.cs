@@ -49,20 +49,17 @@ public class Weapon : MonoBehaviour
             target.transform.localPosition = firepointEnd.localPosition - new Vector3(0.8f, 0f, 0f);
             target.SetActive(true);
             nullIndicator.SetActive(false);
-            Debug.Log("enemy is detected");
         }
         else if (obstacleDetected)
         {
             nullIndicator.transform.localPosition = firepointEnd.localPosition - new Vector3(3f, 0f, 0f); 
             target.SetActive(false);
             nullIndicator.SetActive(true);
-            Debug.Log("obstacle is detected");
         }
         else
         {
             target.SetActive(false);
             nullIndicator.SetActive(false);
-            Debug.Log("nothing is detected"); 
         }
 
     }
