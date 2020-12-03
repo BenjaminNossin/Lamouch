@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 852603035259287119}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: fly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 44716441609235701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.54, y: 0.0125, z: -0.533}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_LocalScale: {x: 0.035, y: 0.035, z: 0.035}
   m_Children:
   - {fileID: 262679666400266007}
   m_Father: {fileID: 0}
@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9012572283127960620}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 53, y: 3, z: 33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 852603035259287119}
@@ -161,3 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06207c0a8a1803740bbf5a309b6d7721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
+  AIState: 0
+  pillar: {fileID: 0}
