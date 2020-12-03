@@ -417,6 +417,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArenaPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7620259630626877090, guid: c59547863d4dde84d9f53627838d8653,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8068156394445450301, guid: c59547863d4dde84d9f53627838d8653,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -585,6 +590,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 142746612511200357, guid: ebd9e01ef4f399f47af9c4befcced6c6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 11da8e95bce436848a6c5427db706e07,
+        type: 3}
     - target: {fileID: 142746612899412352, guid: ebd9e01ef4f399f47af9c4befcced6c6,
         type: 3}
       propertyPath: m_Name
@@ -694,6 +705,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 142746613605814598, guid: ebd9e01ef4f399f47af9c4befcced6c6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aff002490eaa8244ca1137313c45ebc6,
+        type: 3}
+    - target: {fileID: 3922696198789545431, guid: ebd9e01ef4f399f47af9c4befcced6c6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 3922696198789545431, guid: ebd9e01ef4f399f47af9c4befcced6c6,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4464430967801190333, guid: ebd9e01ef4f399f47af9c4befcced6c6,
         type: 3}
