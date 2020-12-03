@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEngine.Audio; 
+using UnityEngine.Audio;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems; 
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,9 +22,15 @@ public class LevelManager : MonoBehaviour
 
     // need reference of spawned object ? 
 
+    /* [Header("Image Tracking")] 
+    public RuntimeReferenceImageLibrary library;  
+    private XRImageTrackingSubsystem subsystem; */
+    
     private void Start()
     {
-        GameplayAudioMixer = gameplayAudioMixer; 
+        GameplayAudioMixer = gameplayAudioMixer;
+        /* subsystem.imageLibrary = library;
+        subsystem.Start(); */
     }
 
     void Update()
