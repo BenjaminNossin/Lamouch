@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections; 
+using System.Collections;
+using System.Collections.Generic; 
 
 public enum State { None, Idle, Charging, Rush }
 
@@ -8,7 +9,8 @@ public class EnemyAI : MonoBehaviour
 {
     [Range(1, 40)] public byte rotationSpeed = 20;
     [Range(1, 10)] public byte attackSpeed = 2;
-    [Range(2, 10)] public byte chargingStateMaxDelay = 5;
+    [Range(1, 5)] public byte chargingStateMinDelay = 5;
+    [Range(2, 15)] public byte chargingStateMaxDelay = 10;
     public LayerMask playerLayer;
     public LayerMask obstacleLayer;
 
@@ -20,7 +22,9 @@ public class EnemyAI : MonoBehaviour
     private Transform target;
 
     private bool rush;
-    private bool newRotationIsSet; 
+    private bool newRotationIsSet;
+
+    public Sound flyingSound; 
 
     // run around
     // rush speed 
@@ -28,8 +32,14 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         pillar = GameObject.Find("Cursed_Pilier").transform; // :D
-        attackDelay = Random.Range(1f, chargingStateMaxDelay);
-        target = GameObject.Find("AR Camera").transform;
+        target = GameObject.Find("AR Camera").transform; // :D
+
+        attackDelay = Random.Range(chargingStateMinDelay, chargingStateMaxDelay);
+
+        flyingSound.source.outputAudioMixerGroup = flyingSound.group;
+        flyingSound.source.PlayOneShot(flyingSound.clip);
+        
+
     }
 
     // Update is called once per frame
@@ -80,7 +90,8 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator SetAttackMovement()
     {
         yield return new WaitForSeconds(1f);
-        rush = true; 
+        rush = true;
+        LevelManager.GameplayAudioMixer.SetFloat("Fly_Move_Pitch", 2f); 
     }
 
     private void AttackState()

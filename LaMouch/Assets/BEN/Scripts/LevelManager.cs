@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;  
+using System.Collections;
+using UnityEngine.Audio; 
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,7 +14,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints_High = new List<Transform>();
     private bool spawn = true;
 
+    // audio
+    public AudioMixer gameplayAudioMixer; 
+    public static AudioMixer GameplayAudioMixer;
+
     // need reference of spawned object ? 
+
+    private void Start()
+    {
+        GameplayAudioMixer = gameplayAudioMixer; 
+    }
 
     void Update()
     {

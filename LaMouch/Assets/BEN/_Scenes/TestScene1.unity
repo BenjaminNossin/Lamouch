@@ -300,9 +300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97210785a0acf2e4cb4a4b9a030ff415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponBehaviour: {fileID: 0}
-  placementIndicator: {fileID: 0}
-  weapon: {fileID: 0}
+  weaponBehaviour: {fileID: 4301707160685764311}
+  placementIndicator: {fileID: 2985352492450439963, guid: 7094a23eab1208d44aa7592eb3f7ce71,
+    type: 3}
+  weapon: {fileID: 574687893}
 --- !u!1 &106108084
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +582,7 @@ MonoBehaviour:
   - {fileID: 106108085}
   - {fileID: 1421716844}
   - {fileID: 1820026208}
+  gameplayAudioMixer: {fileID: 24100000, guid: 3a255f77cf2078144a274634d0e1cd06, type: 2}
 --- !u!1 &351776852
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,6 +934,12 @@ Transform:
   m_Father: {fileID: 1100182661}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0.841, y: 99.7, z: -2.924}
+--- !u!1 &574687893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3995768255897159002, guid: 239765620f854f540aaf2589f81908de,
+    type: 3}
+  m_PrefabInstance: {fileID: 4301707160685764310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &671360429
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,6 +2200,7 @@ GameObject:
   - component: {fileID: 1956636902}
   - component: {fileID: 1956636906}
   - component: {fileID: 1956636907}
+  - component: {fileID: 1956636908}
   m_Layer: 12
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -2329,6 +2338,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!81 &1956636908
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956636900}
+  m_Enabled: 1
 --- !u!1 &2038523373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,6 +2619,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 239765620f854f540aaf2589f81908de, type: 3}
+--- !u!114 &4301707160685764311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5435854878098835781, guid: 239765620f854f540aaf2589f81908de,
+    type: 3}
+  m_PrefabInstance: {fileID: 4301707160685764310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574687893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce9457b1db78a140913a47a5583f0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &4539702728203985886
 MeshRenderer:
   m_ObjectHideFlags: 0
