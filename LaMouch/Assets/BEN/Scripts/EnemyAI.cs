@@ -8,7 +8,8 @@ public enum State { None, Idle, Charging, Rush }
 // run around pillars for x seconds before rushing to player with x speed
 public class EnemyAI : MonoBehaviour
 {
-    [Range(1, 40)] public byte rotationSpeed = 20;
+    public GameObject VFX; 
+    [Range(0, 40)] public byte rotationSpeed = 20;
     [Range(1, 10)] public byte attackSpeed = 2;
     [Range(1, 10)] public byte chargingStateMinDelay = 8;
     [Range(2, 20)] public byte chargingStateMaxDelay = 12;
@@ -27,13 +28,20 @@ public class EnemyAI : MonoBehaviour
 
     public Sound flyingSound;
 
-    public static Action OnTouchingPlayer; 
+    public static Action OnTouchingPlayer;
 
     // run around
     // rush speed 
 
+    private void OnEnable()
+    {
+        Bullet.OnKillingFly += ActivateFVX; 
+    }
+
     private void Start()
     {
+        VFX.SetActive(false); 
+
         try
         {
             pillar = GameObject.Find("Arena").transform; // :D
@@ -85,6 +93,11 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void ActivateFVX()
+    {
+        VFX.SetActive(true);
+    }
+
     private IEnumerator TransitionToRushState()
     {
         yield return new WaitForSeconds(0.5f); 
@@ -126,5 +139,10 @@ public class EnemyAI : MonoBehaviour
 
             OnTouchingPlayer(); 
         }
+    }
+
+    private void OnDisable()
+    {
+        Bullet.OnKillingFly -= ActivateFVX;
     }
 }

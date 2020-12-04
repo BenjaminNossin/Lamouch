@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
             OnReachingNewDifficulty(3); 
         }
 
-        if (Time.time >= 25f && gameplayDifficulty == Difficulty.Medium)
+        if (Time.time >= 45f && gameplayDifficulty == Difficulty.Medium)
         {
             gameplayDifficulty = Difficulty.Hard;
             spawnProbability = 0.2f;
