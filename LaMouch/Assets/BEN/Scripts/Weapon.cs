@@ -29,17 +29,16 @@ public class Weapon : MonoBehaviour
         CastRay(); 
     }
 
-
     public void Attack()
     {
-        if (canShoot)
+        if (canShoot && LevelManager.PillarCount > 0)
         {
             Instantiate(bullet, firepoint.position, firepoint.rotation);
 
             shootSound.source.outputAudioMixerGroup = shootSound.group;
             shootSound.source.PlayOneShot(shootSound.clip);
 
-            StartCoroutine(ModifyWeaponRotation());
+            StartCoroutine(ModifyWeaponRotation()); 
             StartCoroutine(Cooldown()); 
         }
     }

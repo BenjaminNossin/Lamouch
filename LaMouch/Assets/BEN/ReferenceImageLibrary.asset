@@ -12,16 +12,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
   m_Name: ReferenceImageLibrary
   m_EditorClassIdentifier: 
-  m_GuidLow: 5271376906385028438
-  m_GuidHigh: 4802981336024999587
+  m_GuidLow: 5372832621929054795
+  m_GuidHigh: 342460429445170070
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 4619283937363195177
-      m_GuidHigh: 15958605065385758858
+      m_GuidLow: 5437467068257045096
+      m_GuidHigh: 14459822476941242278
+    m_SerializedTextureGuid:
+      m_GuidLow: 4779684908488413563
+      m_GuidHigh: 11799444120021729208
+    m_Size: {x: 0.23, y: 0.19238201}
+    m_SpecifySize: 0
+    m_Name: LAMOUCH_CARRE
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4715030209626411710
+      m_GuidHigh: 6183253396193393572
     m_SerializedTextureGuid:
       m_GuidLow: 1527879554007408803
       m_GuidHigh: 7144376800862304040
     m_Size: {x: 0.23, y: 0.19238201}
-    m_SpecifySize: 1
+    m_SpecifySize: 0
     m_Name: LAMOUCH_CURSED
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5160545974514002777
+      m_GuidHigh: 8833581749338518945
+    m_SerializedTextureGuid:
+      m_GuidLow: 9931805609347891717
+      m_GuidHigh: 3869196151089790682
+    m_Size: {x: 0.23, y: 0.19238201}
+    m_SpecifySize: 0
+    m_Name: LAMOUCH_PENTAGONE
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5223280559303465746
+      m_GuidHigh: 10897903488174003604
+    m_SerializedTextureGuid:
+      m_GuidLow: 16781700686667812054
+      m_GuidHigh: 982973361694329241
+    m_Size: {x: 0.23, y: 0.19238201}
+    m_SpecifySize: 0
+    m_Name: LAMOUCH_TRIANGLE
     m_Texture: {fileID: 0}

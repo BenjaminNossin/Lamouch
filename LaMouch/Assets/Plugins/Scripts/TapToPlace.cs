@@ -2,7 +2,6 @@
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System.Collections.Generic;
-using System.Collections;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class TapToPlace : MonoBehaviour
@@ -39,26 +38,14 @@ public class TapToPlace : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             weaponBehaviour.Attack();
-
-            weapon.transform.localScale = new Vector3(2f, 2f, 2f);
-            StartCoroutine(ResetWeaponScale());
         }
 #else
-        if (Input.GetTouch(0).phase == TouchPhase.Began) // m_aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon) && 
+        if (Input.GetTouch(0).phase == TouchPhase.Began) // m_aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon) 
         {
             weaponBehaviour.Attack(); 
-
-            weapon.transform.localScale = new Vector3(2f, 2f, 2f);
-            StartCoroutine(ResetWeaponScale()); 
         }
 #endif
 
-    }
-
-    IEnumerator ResetWeaponScale()
-    {
-        yield return new WaitForSeconds(1f);
-        weapon.transform.localScale = Vector3.one; 
     }
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
@@ -86,8 +73,6 @@ public class TapToPlace : MonoBehaviour
 
             var cameraForward = Camera.current.transform.forward;
             var cameraBearing = new Vector3(cameraForward.x, 0f, cameraForward.z).normalized;
-            Debug.Log($"camera current is : {Camera.current.name}");
-            Debug.Log($"camera current is : {cameraBearing}");
             PlacementPose.rotation = Quaternion.LookRotation(cameraBearing);
         }
     }

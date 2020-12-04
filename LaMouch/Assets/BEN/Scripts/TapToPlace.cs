@@ -74,8 +74,6 @@ public class TapToPlace : MonoBehaviour
 
             var cameraForward = Camera.current.transform.forward;
             var cameraBearing = new Vector3(cameraForward.x, 0f, cameraForward.z).normalized;
-            Debug.Log($"camera current is : {Camera.current.name}");
-            Debug.Log($"camera current is : {cameraBearing}");
             PlacementPose.rotation = Quaternion.LookRotation(cameraBearing);
         }
     }

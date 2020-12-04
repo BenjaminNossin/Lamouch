@@ -20,6 +20,8 @@ public class LevelManager : MonoBehaviour
     public AudioMixer gameplayAudioMixer; 
     public static AudioMixer GameplayAudioMixer;
 
+    public static int PillarCount { get; set; }
+
     // need reference of spawned object ? 
 
     /* [Header("Image Tracking")] 
