@@ -20,22 +20,40 @@ public class Weapon : MonoBehaviour
 
     public Sound shootSound;
     public Sound arenaSpawnSound;
+    public Sound flyImpactSound;
+    public Sound pillarImpactSound;
 
-    [Header("-- DEBUG --")]
-    [SerializeField] private GameObject target;
-    [SerializeField] private GameObject nullIndicator;
+    private void OnEnable()
+    {
+        Bullet.OnHittingPillar += OnHittingPillarSound;
+        Bullet.OnKillingFly += OnKillingFlySound;
+    }
 
     private void Start()
     {
         shootSound.source.outputAudioMixerGroup = shootSound.group;
+        arenaSpawnSound.source.outputAudioMixerGroup = arenaSpawnSound.group;
+
+        flyImpactSound.source.outputAudioMixerGroup = flyImpactSound.group;
+        pillarImpactSound.source.outputAudioMixerGroup = pillarImpactSound.group;
+
         StartCoroutine(PlaySpawnSound()); 
     }
 
     IEnumerator PlaySpawnSound()
     {
         yield return new WaitForSeconds(0.5f);
-        arenaSpawnSound.source.outputAudioMixerGroup = arenaSpawnSound.group;
         arenaSpawnSound.source.PlayOneShot(arenaSpawnSound.clip);
+    }
+
+    public void OnHittingPillarSound()
+    {
+        pillarImpactSound.source.PlayOneShot(pillarImpactSound.clip);
+    }
+
+    public void OnKillingFlySound()
+    {
+        flyImpactSound.source.PlayOneShot(flyImpactSound.clip);
     }
 
     private void FixedUpdate()
@@ -60,27 +78,6 @@ public class Weapon : MonoBehaviour
     {
         flyDetected = Physics.Linecast(firepoint.position, firepointEnd.position, enemyMask); 
         obstacleDetected = Physics.Linecast(firepoint.position, firepointEnd.position, obstacleMask);
-
-        Debug.DrawLine(firepoint.position, firepointEnd.position, Color.red); 
-
-        if (flyDetected && !obstacleDetected)
-        {
-            target.transform.localPosition = firepointEnd.localPosition - new Vector3(0.8f, 0f, 0f);
-            target.SetActive(true);
-            nullIndicator.SetActive(false);
-        }
-        else if (obstacleDetected)
-        {
-            nullIndicator.transform.localPosition = firepointEnd.localPosition - new Vector3(3f, 0f, 0f); 
-            target.SetActive(false);
-            nullIndicator.SetActive(true);
-        }
-        else
-        {
-            target.SetActive(false);
-            nullIndicator.SetActive(false);
-        }
-
     }
 
     IEnumerator ModifyWeaponRotation()
@@ -105,5 +102,11 @@ public class Weapon : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
         canShoot = true; 
+    }
+
+    private void OnDisable()
+    {
+        Bullet.OnHittingPillar -= OnHittingPillarSound;
+        Bullet.OnKillingFly -= OnKillingFlySound;
     }
 }

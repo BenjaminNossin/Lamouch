@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Audio;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems; 
+using System;
+
+public enum Difficulty { Easy, Medium, Hard }
 
 public class LevelManager : MonoBehaviour
 {
     [Header("Spawning")]
     [SerializeField] private GameObject entityToSpawn;
-    [SerializeField, Range(0f, 0.2f)] private float spawnProbability = 0.6f;
+    [SerializeField, Range(0f, 0.2f)] private float spawnProbability = 0.08f;
     [SerializeField, Range(3f, 20f)] private float spawnCooldown = 10f;
     [SerializeField] private List<Transform> spawnPoints_Low = new List<Transform>();
     [SerializeField] private List<Transform> spawnPoints_Middle = new List<Transform>();
@@ -20,7 +21,7 @@ public class LevelManager : MonoBehaviour
     // audio
     public AudioMixer gameplayAudioMixer; 
     public static AudioMixer GameplayAudioMixer;
-    public Sound spawnSound; 
+    public Sound spawnSound;
 
     // need reference of spawned object ? 
 
@@ -28,24 +29,41 @@ public class LevelManager : MonoBehaviour
     public RuntimeReferenceImageLibrary library;  
     private XRImageTrackingSubsystem subsystem; */
 
+    private Difficulty gameplayDifficulty;
+    public static Action<int> OnReachingNewDifficulty; 
+
     private void Start()
     {
+        gameplayDifficulty = Difficulty.Easy;
         GameplayAudioMixer = gameplayAudioMixer;
         spawnSound.source.outputAudioMixerGroup = spawnSound.group;
         StartCoroutine(SetInitialSpawn());
-        /* subsystem.imageLibrary = library;
-        subsystem.Start(); */
     }
 
     void Update() 
     {
-        if (spawn && gameStarted)
+
+        if (Time.time >= 15f && gameplayDifficulty == Difficulty.Easy)
+        {
+            gameplayDifficulty = Difficulty.Medium; 
+            spawnProbability = 0.125f;
+            OnReachingNewDifficulty(3); 
+        }
+
+        if (Time.time >= 25f && gameplayDifficulty == Difficulty.Medium)
+        {
+            gameplayDifficulty = Difficulty.Hard;
+            spawnProbability = 0.2f;
+            OnReachingNewDifficulty(10);
+        }
+
+        if (spawn && gameStarted && Time.time >= 5f)
         {
             for (int i = 0; i < spawnPoints_Low.Count; i++)
             {
-                float selector_low = Random.Range(0f, 1f);
-                float selector_medium = Random.Range(0f, 1f);
-                float selector_high = Random.Range(0f, 1f);
+                float selector_low = UnityEngine.Random.Range(0f, 1f);
+                float selector_medium = UnityEngine.Random.Range(0f, 1f);
+                float selector_high = UnityEngine.Random.Range(0f, 1f);
 
                 // low
                 if (selector_low <= spawnProbability)
@@ -78,7 +96,6 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Instantiate(entityToSpawn, spawnPoints_Low[0].position, Quaternion.Euler(0f, spawnPoints_Low[0].rotation.eulerAngles.y - 180f, 0f));
         gameStarted = true;
-        spawn = false;
     }
 
     private IEnumerator SpawnCooldown()

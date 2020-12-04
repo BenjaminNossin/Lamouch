@@ -227,3 +227,9 @@ MonoBehaviour:
     source: {fileID: -3219764830471471868}
     clip: {fileID: 8300000, guid: 865a34452fcc7974dbe61ae22c47d4b2, type: 3}
     group: {fileID: 3608598442352590499, guid: 3a255f77cf2078144a274634d0e1cd06, type: 2}
+  pillarImpactSound:
+    soundName: pilllarSound
+    source: {fileID: -3219764830471471868}
+    clip: {fileID: 8300000, guid: 0654f62acb791764587c32886f86f2ad, type: 3}
+    group: {fileID: -4727603554623929186, guid: 3a255f77cf2078144a274634d0e1cd06,
+      type: 2}

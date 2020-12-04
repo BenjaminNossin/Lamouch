@@ -5,7 +5,7 @@ using System.Collections;
 
 public class Score : MonoBehaviour
 {
-    [Range(1, 30)] public int HP = 20; 
+    [Range(1, 40)] public int HP = 20; 
     public Text score, lives;
     public static int scoreInt;
     public static int livesInt;
@@ -17,6 +17,7 @@ public class Score : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "TestScene1")
         {
+            LevelManager.OnReachingNewDifficulty += AddHP;
             EnemyAI.OnTouchingPlayer += LoseLIfe;
             Bullet.OnKillingFly += AddScore;
         }
@@ -77,10 +78,16 @@ public class Score : MonoBehaviour
         }
     }
 
+    public void AddHP(int amount)
+    {
+        livesInt += amount; 
+    }
+
     private void OnDisable()
     {
         if (SceneManager.GetActiveScene().name == "TestScene1")
         {
+            LevelManager.OnReachingNewDifficulty -= AddHP; 
             EnemyAI.OnTouchingPlayer -= LoseLIfe;
             Bullet.OnKillingFly -= AddScore;
         }

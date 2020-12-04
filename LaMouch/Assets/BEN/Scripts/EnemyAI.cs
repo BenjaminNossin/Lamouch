@@ -10,8 +10,8 @@ public class EnemyAI : MonoBehaviour
 {
     [Range(1, 40)] public byte rotationSpeed = 20;
     [Range(1, 10)] public byte attackSpeed = 2;
-    [Range(1, 5)] public byte chargingStateMinDelay = 5;
-    [Range(2, 15)] public byte chargingStateMaxDelay = 10;
+    [Range(1, 10)] public byte chargingStateMinDelay = 8;
+    [Range(2, 20)] public byte chargingStateMaxDelay = 12;
     public LayerMask playerLayer;
     public LayerMask obstacleLayer;
 

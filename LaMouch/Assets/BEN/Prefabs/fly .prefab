@@ -101,7 +101,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5.926432
+  m_Radius: 10
   m_Center: {x: -0.38565487, y: 2.219188, z: -1.1679233}
 --- !u!54 &1592253583548122530
 Rigidbody:
@@ -229,8 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 20
   attackSpeed: 5
-  chargingStateMinDelay: 5
-  chargingStateMaxDelay: 10
+  chargingStateMinDelay: 8
+  chargingStateMaxDelay: 15
   playerLayer:
     serializedVersion: 2
     m_Bits: 4096

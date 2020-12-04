@@ -5,13 +5,13 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField, Range(5f, 15f)] private float speed = 10f;
     [SerializeField, Range(0.1f, 2f)] private float destroyDelay = 1f;
-    public Sound flyImpactSound;
 
+    public static Action OnHittingPillar;
     public static Action OnKillingFly; 
 
     private void Start()
     {
-        Destroy(gameObject, destroyDelay); 
+        Destroy(gameObject, destroyDelay);
     }
 
     void FixedUpdate()
@@ -24,12 +24,17 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Destroy(other.transform.parent.gameObject);
-            Destroy(gameObject, 0.1f);
-
-            flyImpactSound.source.outputAudioMixerGroup = flyImpactSound.group; 
-            flyImpactSound.source.PlayOneShot(flyImpactSound.clip);
+            Destroy(gameObject, 0.05f);
 
             OnKillingFly(); 
+            Debug.Log("killing fly");
+        }
+        else if (other.CompareTag("Pillar"))
+        { 
+            Destroy(gameObject, 0.05f);
+
+            OnHittingPillar(); 
+            Debug.Log("detecting pillar"); 
         }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Spawner
+  - Pillar
   layers:
   - Default
   - TransparentFX
