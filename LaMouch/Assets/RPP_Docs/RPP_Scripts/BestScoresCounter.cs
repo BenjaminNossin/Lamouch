@@ -28,11 +28,14 @@ public class BestScoresCounter : MonoBehaviour
     {
         if (Score.scoreInt >= previousScore1)
         {
+            previousScore3 = previousScore2;
+            previousScore2 = previousScore1;
             previousScore1 = Score.scoreInt;
             congrats.SetActive(true);
         }
         else if (Score.scoreInt >= previousScore2)
         {
+            previousScore3 = previousScore2;
             previousScore2 = Score.scoreInt;
             congrats.SetActive(false);
         }
