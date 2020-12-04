@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
 
     public void Attack()
     {
-        if (canShoot && LevelManager.PillarCount > 0)
+        if (canShoot)
         {
             Instantiate(bullet, firepoint.position, firepoint.rotation);
 

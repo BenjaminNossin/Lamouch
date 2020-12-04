@@ -3,15 +3,11 @@ using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-    private GameObject pillar;
-    public static bool alive; 
+    private GameObject arena;
 
     void Start()
-    {
-        
-        pillar = Resources.Load<GameObject>("Pillar");
+    {     
         Debug.Log("PLACEMENT INDICATOR IS SET");
-        StartCoroutine(SetAliveState()); 
     }
 
     private void Update()
@@ -23,26 +19,33 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetTouch(0).phase == TouchPhase.Began && alive)
+        if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            ActivatePillar(); 
+            ActivateArena(); 
         }
 #else
         if (Input.GetKeyDown(KeyCode.C))
         {
-            ActivatePillar();
+            ActivateArena();
         }
 #endif
     }
 
-    public void ActivatePillar()
+    public void ActivateArena()
     {
         // decide how much pillars to activate based on difficulty settings
-        Instantiate(pillar, transform.position + new Vector3(0f, 1.35f, 0f), Quaternion.Euler(-90f, 0f, 0f));
-        LevelManager.PillarCount++;
-        Destroy(gameObject, 0.1f);
+        Instantiate(Resources.Load<GameObject>("Arena"), SpawnPoint.Transform.position, Quaternion.identity);
+        StartCoroutine(SetArenaBool()); 
+
+        Destroy(gameObject, 0.2f);
         Object self = gameObject;
         self = null;
+    }
+
+    IEnumerator SetArenaBool()
+    {
+        yield return new WaitForFixedUpdate(); 
+        LevelManager.arenaIsSet = true;
     }
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
@@ -55,16 +58,5 @@ public class UIManager : MonoBehaviour
 
         touchPosition = default;
         return false;
-    }
-
-    IEnumerator SetAliveState()
-    {
-        yield return new WaitForSeconds(0.5f);
-        alive = true; 
-    }
-
-    private void OnDestroy()
-    {
-        alive = false; 
     }
 }

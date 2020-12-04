@@ -2,7 +2,6 @@
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System.Collections.Generic;
-using System.Collections;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class TapToPlace : MonoBehaviour

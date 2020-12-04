@@ -40,7 +40,7 @@ public class TapToPlace : MonoBehaviour
             weaponBehaviour.Attack();
         }
 #else
-        if (Input.GetTouch(0).phase == TouchPhase.Began) // m_aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon) 
+        if (Input.GetTouch(0).phase == TouchPhase.Began) 
         {
             weaponBehaviour.Attack(); 
         }

@@ -8,36 +8,37 @@ using UnityEngine.XR.ARSubsystems;
 public class LevelManager : MonoBehaviour
 {
     [Header("Spawning")]
-    [SerializeField] private GameObject entityToSpawn; 
+    [SerializeField] private GameObject entityToSpawn;
     [SerializeField, Range(0f, 0.2f)] private float spawnProbability = 0.6f;
     [SerializeField, Range(3f, 20f)] private float spawnCooldown = 10f;
     [SerializeField] private List<Transform> spawnPoints_Low = new List<Transform>();
     [SerializeField] private List<Transform> spawnPoints_Middle = new List<Transform>();
     [SerializeField] private List<Transform> spawnPoints_High = new List<Transform>();
-    private bool spawn = true;
+    private bool spawn = true; 
+    private bool gameStarted; 
 
     // audio
     public AudioMixer gameplayAudioMixer; 
     public static AudioMixer GameplayAudioMixer;
-
-    public static int PillarCount { get; set; }
+    public static bool arenaIsSet;
 
     // need reference of spawned object ? 
 
     /* [Header("Image Tracking")] 
     public RuntimeReferenceImageLibrary library;  
     private XRImageTrackingSubsystem subsystem; */
-    
+
     private void Start()
     {
         GameplayAudioMixer = gameplayAudioMixer;
+        StartCoroutine(SetInitialSpawn());
         /* subsystem.imageLibrary = library;
         subsystem.Start(); */
     }
 
-    void Update()
+    void Update() 
     {
-        if (spawn)
+        if (spawn && arenaIsSet && gameStarted)
         {
             for (int i = 0; i < spawnPoints_Low.Count; i++)
             {
@@ -66,6 +67,12 @@ public class LevelManager : MonoBehaviour
 
             StartCoroutine(SpawnCooldown());
         }
+    }
+
+    private IEnumerator SetInitialSpawn()
+    {
+        yield return new WaitForSeconds(3f);
+        gameStarted = true; 
     }
 
     private IEnumerator SpawnCooldown()

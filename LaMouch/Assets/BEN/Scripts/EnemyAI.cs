@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System; 
 
 public enum State { None, Idle, Charging, Rush }
 
@@ -31,15 +32,17 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        pillar = GameObject.Find("Cursed_Pilier").transform; // :D
-        target = GameObject.Find("AR Camera").transform; // :D
+        try
+        {
+            pillar = GameObject.Find("Arena(Clone)").transform; // :D
+            target = GameObject.Find("AR Camera").transform; // :D
+        }
+        catch (Exception) { }
 
-        attackDelay = Random.Range(chargingStateMinDelay, chargingStateMaxDelay);
+        attackDelay = UnityEngine.Random.Range(chargingStateMinDelay, chargingStateMaxDelay);
 
         flyingSound.source.outputAudioMixerGroup = flyingSound.group;
         flyingSound.source.PlayOneShot(flyingSound.clip);
-        
-
     }
 
     // Update is called once per frame
