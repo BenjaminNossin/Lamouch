@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField, Range(5f, 15f)] private float speed = 10f;
     [SerializeField, Range(0.1f, 2f)] private float destroyDelay = 1f;
-    public Sound flyImpactSound; 
+    public Sound flyImpactSound;
+
+    public static Action OnKillingFly; 
 
     private void Start()
     {
@@ -24,7 +27,9 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject, 0.1f);
 
             flyImpactSound.source.outputAudioMixerGroup = flyImpactSound.group; 
-            flyImpactSound.source.PlayOneShot(flyImpactSound.clip); 
+            flyImpactSound.source.PlayOneShot(flyImpactSound.clip);
+
+            OnKillingFly(); 
         }
     }
 }

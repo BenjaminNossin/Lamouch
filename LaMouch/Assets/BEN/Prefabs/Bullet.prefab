@@ -223,8 +223,7 @@ MonoBehaviour:
   speed: 10
   destroyDelay: 1
   flyImpactSound:
-    soundName: 
+    soundName: impactSound
     source: {fileID: -3219764830471471868}
-    clip: {fileID: 8300000, guid: 92e5ef0213f98204597261a8143f5fd2, type: 3}
-    group: {fileID: -8620975774170481815, guid: 3a255f77cf2078144a274634d0e1cd06,
-      type: 2}
+    clip: {fileID: 8300000, guid: 865a34452fcc7974dbe61ae22c47d4b2, type: 3}
+    group: {fileID: 3608598442352590499, guid: 3a255f77cf2078144a274634d0e1cd06, type: 2}

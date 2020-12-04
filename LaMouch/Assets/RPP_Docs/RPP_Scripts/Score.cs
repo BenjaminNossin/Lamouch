@@ -14,7 +14,8 @@ public class Score : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemyAI.OnTouchingPlayer += LoseLIfe; 
+        EnemyAI.OnTouchingPlayer += LoseLIfe;
+        Bullet.OnKillingFly += AddScore;
     }
 
     private void Start()
@@ -26,7 +27,6 @@ public class Score : MonoBehaviour
         {
             scoreInt = 0;
         }        
-        livesInt = 3;
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class Score : MonoBehaviour
 
     public void AddScore()
     {
-        scoreInt ++;
+        scoreInt++;
     }
 
     public void LoseLIfe()
@@ -70,5 +70,6 @@ public class Score : MonoBehaviour
     private void OnDisable()
     {
         EnemyAI.OnTouchingPlayer -= LoseLIfe;
+        Bullet.OnKillingFly -= AddScore; 
     }
 }
