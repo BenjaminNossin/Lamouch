@@ -7,7 +7,7 @@ public class EndButtons : MonoBehaviour
 {
     public void RestartGame()
     {
-        //ReLoad Game Scene
+        SceneManager.LoadScene("RPP_MainScene");
     }
 
     public void BackToMenu()
