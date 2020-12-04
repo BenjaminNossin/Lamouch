@@ -200,7 +200,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -313,6 +313,12 @@ MonoBehaviour:
     source: {fileID: 4765902442496731687}
     clip: {fileID: 8300000, guid: 8f0b73d3b4a684242bae5dd4ad44c575, type: 3}
     group: {fileID: -6244570307898487647, guid: 3a255f77cf2078144a274634d0e1cd06,
+      type: 2}
+  arenaSpawnSound:
+    soundName: arenaSpawn
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2edcd40c751a85649b0b053000e96e84, type: 3}
+    group: {fileID: -2980873362964373098, guid: 3a255f77cf2078144a274634d0e1cd06,
       type: 2}
   target: {fileID: 9200532649922968790}
   nullIndicator: {fileID: 5991887377455869439}

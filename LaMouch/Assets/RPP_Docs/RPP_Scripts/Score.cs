@@ -5,23 +5,31 @@ using System.Collections;
 
 public class Score : MonoBehaviour
 {
+    [Range(1, 30)] public int HP = 20; 
     public Text score, lives;
     public static int scoreInt;
-    public int livesInt;
+    public static int livesInt;
     public bool isInEndScene = false;
     public Sound impactSound;
     public Sound gameOverSound;
 
     private void OnEnable()
     {
-        EnemyAI.OnTouchingPlayer += LoseLIfe;
-        Bullet.OnKillingFly += AddScore;
+        if (SceneManager.GetActiveScene().name == "TestScene1")
+        {
+            EnemyAI.OnTouchingPlayer += LoseLIfe;
+            Bullet.OnKillingFly += AddScore;
+        }
     }
 
     private void Start()
     {
-        impactSound.source.outputAudioMixerGroup = impactSound.group;
-        gameOverSound.source.outputAudioMixerGroup = gameOverSound.group;
+        livesInt = HP; 
+        if (SceneManager.GetActiveScene().name == "TestScene1")
+        {
+            impactSound.source.outputAudioMixerGroup = impactSound.group;
+            gameOverSound.source.outputAudioMixerGroup = gameOverSound.group;
+        }
 
         if (!isInEndScene)
         {
@@ -35,14 +43,13 @@ public class Score : MonoBehaviour
         {
             score.text = ": " + scoreInt;
             lives.text = ": " + livesInt;
-        }  
-        
+        }        
         else
         {
             score.text = "" + scoreInt;
         }
 
-        if (livesInt <= 0)
+        if (livesInt <= 0 && SceneManager.GetActiveScene().name == "TestScene1")
         {
             gameOverSound.source.PlayOneShot(gameOverSound.clip);
             StartCoroutine(LoadNewScene()); 
@@ -63,13 +70,19 @@ public class Score : MonoBehaviour
 
     public void LoseLIfe()
     {
-        livesInt--;
-        impactSound.source.PlayOneShot(impactSound.clip);
+        if (livesInt > 0)
+        {
+            livesInt--;
+            impactSound.source.PlayOneShot(impactSound.clip);
+        }
     }
 
     private void OnDisable()
     {
-        EnemyAI.OnTouchingPlayer -= LoseLIfe;
-        Bullet.OnKillingFly -= AddScore; 
+        if (SceneManager.GetActiveScene().name == "TestScene1")
+        {
+            EnemyAI.OnTouchingPlayer -= LoseLIfe;
+            Bullet.OnKillingFly -= AddScore;
+        }
     }
 }

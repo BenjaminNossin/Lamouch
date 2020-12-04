@@ -18,7 +18,8 @@ public class Weapon : MonoBehaviour
         enemyMaskindex = 10,
         obstacleMaskIndex = 11;
 
-    public Sound shootSound; 
+    public Sound shootSound;
+    public Sound arenaSpawnSound;
 
     [Header("-- DEBUG --")]
     [SerializeField] private GameObject target;
@@ -27,6 +28,14 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         shootSound.source.outputAudioMixerGroup = shootSound.group;
+        StartCoroutine(PlaySpawnSound()); 
+    }
+
+    IEnumerator PlaySpawnSound()
+    {
+        yield return new WaitForSeconds(0.5f);
+        arenaSpawnSound.source.outputAudioMixerGroup = arenaSpawnSound.group;
+        arenaSpawnSound.source.PlayOneShot(arenaSpawnSound.clip);
     }
 
     private void FixedUpdate()

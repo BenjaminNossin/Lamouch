@@ -75,8 +75,10 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator SetInitialSpawn()
     {
-        yield return new WaitForSeconds(3f);
-        gameStarted = true; 
+        yield return new WaitForSeconds(5f);
+        Instantiate(entityToSpawn, spawnPoints_Low[0].position, Quaternion.Euler(0f, spawnPoints_Low[0].rotation.eulerAngles.y - 180f, 0f));
+        gameStarted = true;
+        spawn = false;
     }
 
     private IEnumerator SpawnCooldown()
