@@ -13,6 +13,8 @@ public class Score : MonoBehaviour
     public Sound impactSound;
     public Sound gameOverSound;
 
+    private bool newSceneLoaded; 
+
     private void OnEnable()
     {
         if (SceneManager.GetActiveScene().name == "TestScene1")
@@ -50,8 +52,9 @@ public class Score : MonoBehaviour
             score.text = "" + scoreInt;
         }
 
-        if (livesInt <= 0 && SceneManager.GetActiveScene().name == "TestScene1")
+        if (livesInt <= 0 && SceneManager.GetActiveScene().name == "TestScene1" && !newSceneLoaded)
         {
+            newSceneLoaded = true; 
             gameOverSound.source.PlayOneShot(gameOverSound.clip);
             StartCoroutine(LoadNewScene()); 
         }

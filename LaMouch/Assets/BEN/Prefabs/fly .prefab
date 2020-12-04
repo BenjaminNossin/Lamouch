@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VFX: {fileID: 3000279459722959435}
-  rotationSpeed: 0
+  rotationSpeed: 20
   attackSpeed: 5
   chargingStateMinDelay: 8
   chargingStateMaxDelay: 15

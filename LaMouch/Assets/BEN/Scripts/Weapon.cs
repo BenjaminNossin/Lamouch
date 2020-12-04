@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
 
     public void Attack()
     {
-        if (canShoot)
+        if (canShoot && Score.livesInt > 0)
         {
             Instantiate(bullet, firepoint.position, firepoint.rotation);
 
