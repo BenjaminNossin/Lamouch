@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] private GameObject VFX; 
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firepoint;
     [SerializeField] private Transform firepointEnd;
@@ -31,6 +32,8 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        VFX.SetActive(false); 
+
         shootSound.source.outputAudioMixerGroup = shootSound.group;
         arenaSpawnSound.source.outputAudioMixerGroup = arenaSpawnSound.group;
 
@@ -69,8 +72,9 @@ public class Weapon : MonoBehaviour
 
             shootSound.source.PlayOneShot(shootSound.clip);
 
-            StartCoroutine(ModifyWeaponRotation()); 
-            StartCoroutine(Cooldown()); 
+            StartCoroutine(ModifyWeaponRotation());
+            StartCoroutine(ToogleVFX());
+            StartCoroutine(Cooldown());
         }
     }
 
@@ -94,6 +98,14 @@ public class Weapon : MonoBehaviour
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,
                                       transform.rotation.eulerAngles.y,
                                       transform.rotation.eulerAngles.z - 23f);
+    }
+
+    IEnumerator ToogleVFX()
+    {
+        VFX.SetActive(true);
+
+        yield return new WaitForSeconds(0.2f);
+        VFX.SetActive(false);
     }
 
     IEnumerator Cooldown()

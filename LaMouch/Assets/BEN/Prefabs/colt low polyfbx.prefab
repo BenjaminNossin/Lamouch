@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce9457b1db78a140913a47a5583f0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VFX: {fileID: 0}
   bullet: {fileID: 7784216741064564089, guid: 0be39eb6408cb1040aad11d53ffe8d9f, type: 3}
   firepoint: {fileID: 554506021}
   firepointEnd: {fileID: 1967502289}
