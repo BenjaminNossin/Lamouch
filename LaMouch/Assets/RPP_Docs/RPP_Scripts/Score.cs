@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;  
 
 public class Score : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Score : MonoBehaviour
     public static int scoreInt;
     public int livesInt;
     public bool isInEndScene = false;
+    public Sound impactSound;
+    public Sound gameOverSound;
 
     private void OnEnable()
     {
@@ -16,6 +19,9 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
+        impactSound.source.outputAudioMixerGroup = impactSound.group;
+        gameOverSound.source.outputAudioMixerGroup = gameOverSound.group;
+
         if (!isInEndScene)
         {
             scoreInt = 0;
@@ -38,9 +44,17 @@ public class Score : MonoBehaviour
 
         if (livesInt <= 0)
         {
-            SceneManager.LoadScene("BestScoreScene");
+            gameOverSound.source.PlayOneShot(gameOverSound.clip);
+            StartCoroutine(LoadNewScene()); 
         }
     }
+
+    IEnumerator LoadNewScene()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadSceneAsync("BestScoreScene", LoadSceneMode.Single);
+    }
+    
 
     public void AddScore()
     {
@@ -50,6 +64,7 @@ public class Score : MonoBehaviour
     public void LoseLIfe()
     {
         livesInt--;
+        impactSound.source.PlayOneShot(impactSound.clip);
     }
 
     private void OnDisable()

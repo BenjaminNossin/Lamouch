@@ -30,6 +30,49 @@ Transform:
   m_Father: {fileID: 4339221137712488416}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1669890488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1669890489}
+  - component: {fileID: 1669890490}
+  m_Layer: 0
+  m_Name: ArenaSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1669890489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669890488}
+  m_LocalRotation: {x: 0.046062242, y: 0.7056049, z: -0.046062242, w: 0.7056049}
+  m_LocalPosition: {x: -0.14092205, y: 0.018477669, z: 0.04060907}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4339221137712488416}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1669890490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669890488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248af67921a71504ab48a6afc16762a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1967502288
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +138,7 @@ Transform:
   - {fileID: 1967502289}
   - {fileID: 9200532649922968786}
   - {fileID: 5991887377455869435}
+  - {fileID: 1669890489}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -256,7 +300,7 @@ MonoBehaviour:
   bullet: {fileID: 7784216741064564089, guid: 0be39eb6408cb1040aad11d53ffe8d9f, type: 3}
   firepoint: {fileID: 554506021}
   firepointEnd: {fileID: 1967502289}
-  delay: 0.75
+  delay: 0.15
   rayDistance: 3.5
   obstacleMask:
     serializedVersion: 2
@@ -267,8 +311,9 @@ MonoBehaviour:
   shootSound:
     soundName: shoot
     source: {fileID: 4765902442496731687}
-    clip: {fileID: 8300000, guid: 3e68d0b97f3455449a8fee362011b224, type: 3}
-    group: {fileID: 3014023977067201493, guid: 3a255f77cf2078144a274634d0e1cd06, type: 2}
+    clip: {fileID: 8300000, guid: 8f0b73d3b4a684242bae5dd4ad44c575, type: 3}
+    group: {fileID: -6244570307898487647, guid: 3a255f77cf2078144a274634d0e1cd06,
+      type: 2}
   target: {fileID: 9200532649922968790}
   nullIndicator: {fileID: 5991887377455869439}
 --- !u!1001 &5149075137757181216

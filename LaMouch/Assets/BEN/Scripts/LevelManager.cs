@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     // audio
     public AudioMixer gameplayAudioMixer; 
     public static AudioMixer GameplayAudioMixer;
+    public Sound spawnSound; 
 
     // need reference of spawned object ? 
 
@@ -30,6 +31,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GameplayAudioMixer = gameplayAudioMixer;
+        spawnSound.source.outputAudioMixerGroup = spawnSound.group;
         StartCoroutine(SetInitialSpawn());
         /* subsystem.imageLibrary = library;
         subsystem.Start(); */
@@ -48,18 +50,21 @@ public class LevelManager : MonoBehaviour
                 // low
                 if (selector_low <= spawnProbability)
                 {
+                    spawnSound.source.PlayOneShot(spawnSound.clip); 
                     Instantiate(entityToSpawn, spawnPoints_Low[i].position, Quaternion.Euler(0f, spawnPoints_Low[i].rotation.eulerAngles.y - 180f, 0f)); 
                 }
 
                 // medium
                 if (selector_medium <= spawnProbability)
                 {
+                    spawnSound.source.PlayOneShot(spawnSound.clip);
                     Instantiate(entityToSpawn, spawnPoints_Middle[i].position, Quaternion.Euler(0f, spawnPoints_Middle[i].rotation.eulerAngles.y - 180f, 0f));
                 }
 
                 // high
                 if (selector_high <= spawnProbability)
                 {
+                    spawnSound.source.PlayOneShot(spawnSound.clip);
                     Instantiate(entityToSpawn, spawnPoints_High[i].position, Quaternion.Euler(0f, spawnPoints_High[i].rotation.eulerAngles.y - 180f, 0f));
                 }
             }

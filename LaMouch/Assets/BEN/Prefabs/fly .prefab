@@ -241,9 +241,8 @@ MonoBehaviour:
   flyingSound:
     soundName: fly_move
     source: {fileID: 7685109962091859476}
-    clip: {fileID: 8300000, guid: d9c11b11cf365884c84c560a0a917ee4, type: 3}
-    group: {fileID: -4121711877155194388, guid: 3a255f77cf2078144a274634d0e1cd06,
-      type: 2}
+    clip: {fileID: 8300000, guid: 44ec70b0581e2f040bdb610dfb0cefee, type: 3}
+    group: {fileID: 3407677908815029169, guid: 3a255f77cf2078144a274634d0e1cd06, type: 2}
 --- !u!1 &5486431467030440923
 GameObject:
   m_ObjectHideFlags: 0

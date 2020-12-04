@@ -24,6 +24,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject nullIndicator;
 
+    private void Start()
+    {
+        shootSound.source.outputAudioMixerGroup = shootSound.group;
+    }
+
     private void FixedUpdate()
     {
         CastRay(); 
@@ -35,7 +40,6 @@ public class Weapon : MonoBehaviour
         {
             Instantiate(bullet, firepoint.position, firepoint.rotation);
 
-            shootSound.source.outputAudioMixerGroup = shootSound.group;
             shootSound.source.PlayOneShot(shootSound.clip);
 
             StartCoroutine(ModifyWeaponRotation()); 
