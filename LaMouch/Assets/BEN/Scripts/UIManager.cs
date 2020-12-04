@@ -45,7 +45,6 @@ public class UIManager : MonoBehaviour
     IEnumerator SetArenaBool()
     {
         yield return new WaitForFixedUpdate(); 
-        LevelManager.arenaIsSet = true;
     }
 
     bool TryGetTouchPosition(out Vector2 touchPosition)

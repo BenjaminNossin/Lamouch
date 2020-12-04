@@ -1,14 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
     public Text score, lives;
-    public static int scoreInt, livesInt;
+    public static int scoreInt;
+    public int livesInt;
     public bool isInEndScene = false;
+
+    private void OnEnable()
+    {
+        EnemyAI.OnTouchingPlayer += LoseLIfe; 
+    }
 
     private void Start()
     {
@@ -46,5 +50,10 @@ public class Score : MonoBehaviour
     public void LoseLIfe()
     {
         livesInt--;
+    }
+
+    private void OnDisable()
+    {
+        EnemyAI.OnTouchingPlayer -= LoseLIfe;
     }
 }

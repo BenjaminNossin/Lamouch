@@ -25,7 +25,9 @@ public class EnemyAI : MonoBehaviour
     private bool rush;
     private bool newRotationIsSet;
 
-    public Sound flyingSound; 
+    public Sound flyingSound;
+
+    public static Action OnTouchingPlayer; 
 
     // run around
     // rush speed 
@@ -34,7 +36,7 @@ public class EnemyAI : MonoBehaviour
     {
         try
         {
-            pillar = GameObject.Find("Arena(Clone)").transform; // :D
+            pillar = GameObject.Find("Arena").transform; // :D
             target = GameObject.Find("AR Camera").transform; // :D
         }
         catch (Exception) { }
@@ -119,8 +121,10 @@ public class EnemyAI : MonoBehaviour
         if (other.CompareTag("MainCamera"))
         {
             Destroy(gameObject); // placeholder
-            Debug.Log("-- HIT --"); 
+            Debug.Log("-- HIT --");
             // NEED FEEDBACK PASS
+
+            OnTouchingPlayer(); 
         }
     }
 }

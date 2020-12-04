@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/BAPT/_Scene/Main_Menu.unity
     guid: e2203a1f81b86284cb6f342a37adccf1
   - enabled: 1
     path: Assets/BEN/_Scenes/TestScene1.unity
     guid: 58ccae9980dd08d44b327ef7bc3f6d21
-  - enabled: 0
+  - enabled: 1
     path: Assets/RPP_Docs/RPP_Scenes/BestScoreScene.unity
     guid: f1ab0ef960cea1740b1105d687cca4ba
   m_configObjects:

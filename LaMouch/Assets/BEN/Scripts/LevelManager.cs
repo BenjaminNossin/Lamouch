@@ -20,7 +20,6 @@ public class LevelManager : MonoBehaviour
     // audio
     public AudioMixer gameplayAudioMixer; 
     public static AudioMixer GameplayAudioMixer;
-    public static bool arenaIsSet;
 
     // need reference of spawned object ? 
 
@@ -38,7 +37,7 @@ public class LevelManager : MonoBehaviour
 
     void Update() 
     {
-        if (spawn && arenaIsSet && gameStarted)
+        if (spawn && gameStarted)
         {
             for (int i = 0; i < spawnPoints_Low.Count; i++)
             {
